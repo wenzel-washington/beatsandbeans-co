@@ -13,7 +13,6 @@
 
         :root {
             --primary-bg: #14635f;
-            --darker-bg: #0d4a47; /* ADDED: A darker shade for the footer */
             --accent-pink: #f4a9c8;
             --text-light: #ffffff;
         }
@@ -39,7 +38,7 @@
             top: 0;
             left: 0;
             right: 0;
-            background-color: rgba(20, 99, 95, 0.85); /* CHANGED: Increased transparency */
+            background-color: rgba(20, 99, 95, 0.95);
             backdrop-filter: blur(10px);
             -webkit-backdrop-filter: blur(10px);
             z-index: 1000;
@@ -49,7 +48,7 @@
 
         header.scrolled {
             box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
-            background-color: rgba(20, 99, 95, 0.95); /* CHANGED: Slightly less transparent on scroll */
+            background-color: rgba(20, 99, 95, 0.98);
         }
 
         .nav-container {
@@ -177,7 +176,7 @@
             right: -100%;
             width: 250px;
             height: 100vh;
-            background-color: rgba(20, 99, 95, 0.95);
+            background-color: rgba(20, 99, 95, 0.98);
             backdrop-filter: blur(10px);
             -webkit-backdrop-filter: blur(10px);
             transition: right 0.3s ease-in-out;
@@ -319,48 +318,32 @@
             max-width: 400px;
             margin: 2rem auto;
             aspect-ratio: 1;
-            background-color: rgba(244, 169, 200, 0.1);
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
             position: relative;
             overflow: hidden;
+            background-color: rgba(244, 169, 200, 0.1);
         }
 
-        .video-placeholder {
-            width: 90%;
-            height: 90%;
-            background: linear-gradient(45deg, var(--accent-pink), rgba(244, 169, 200, 0.6));
+        .video-container video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
             border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.2rem;
-            color: var(--primary-bg);
-            animation: rotate 4s linear infinite;
-        }
-
-        @keyframes rotate {
-            from {
-                transform: rotate(0deg);
-            }
-            to {
-                transform: rotate(360deg);
-            }
         }
 
         /* Footer */
         footer {
-            /* CHANGED: Switched to the new darker variable */
-            background-color: var(--darker-bg); 
+            background-color: rgba(20, 99, 95, 0.95);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
             padding: 1.5rem 1rem;
             text-align: center;
             display: flex;
             align-items: center;
             justify-content: center;
-            /* ADDED: A top border for clear visual separation */
-            border-top: 1px solid rgba(244, 169, 200, 0.2); 
         }
 
         .social-links {
@@ -460,15 +443,10 @@
             </div>
 
             <div class="video-container fade-in fade-in-delay">
-                <!-- Replace this placeholder with your actual video -->
-                <div class="video-placeholder">
-                    [Your Video Here]
-                </div>
-                <!-- 
                 <video autoplay muted loop playsinline>
-                    <source src="your-video.mp4" type="video/mp4">
+                    <source src="https://i.imgur.com/KhQYL5n.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
                 </video>
-                -->
             </div>
 
             <div class="text-section fade-in fade-in-delay-2">
@@ -502,7 +480,7 @@
         </div>
     </footer>
 
-        <script>
+    <script>
         // Hamburger menu functionality
         const hamburger = document.getElementById('hamburger');
         const mobileMenu = document.getElementById('mobileMenu');
@@ -543,8 +521,7 @@
         // Scroll animations
         const observerOptions = {
             threshold: 0.1,
-            // CHANGED: The bottom margin is now 0, so the animation triggers right at the edge of the screen.
-            rootMargin: '0px 0px 0px 0px' 
+            rootMargin: '0px 0px -50px 0px'
         };
 
         const observer = new IntersectionObserver(function(entries) {
@@ -578,6 +555,6 @@
             
             lastScroll = currentScroll;
         });
-        </script>
+    </script>
 </body>
 </html>
