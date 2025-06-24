@@ -54,44 +54,54 @@
         /* Teaser standardmäßig ausblenden */
         .event-teaser{
             display: none;  /* Initially hidden */
-            gap:.75rem;
-            align-items:center;
-            font-size:.9rem;
-            line-height:1.4;
-            white-space:normal;           /* Umschalten: erlaubt Zeilenumbruch */
-            background:rgba(244,169,200,.15);   /* zartrosa Highlight */
-            padding:.35rem .75rem;
-            border-radius:4px;
+            position: absolute;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            gap: 1rem;
+            align-items: center;
+            font-size: .9rem;
+            line-height: 1.4;
+            white-space: nowrap;
+            background: rgba(244,169,200,.15);
+            padding: .5rem 1rem;
+            border-radius: 6px;
+            max-width: calc(100% - 2rem);
         }
 
         /* Kalender-Button auffällig */
         .calendar-btn{
-            padding:.35rem .65rem;
-            border:1px solid var(--accent-pink);
-            border-radius:4px;
-            font-size:.8rem;
-            text-decoration:none;
-            color:var(--accent-pink);
-            transition:background .2s;
+            padding: .4rem .8rem;
+            border: 1px solid var(--accent-pink);
+            border-radius: 6px;
+            font-size: .85rem;
+            text-decoration: none;
+            color: var(--accent-pink);
+            transition: background .2s;
+            white-space: nowrap;
         }
 
         .calendar-btn:hover{
-            background:rgba(244,169,200,.25);
+            background: rgba(244,169,200,.25);
         }
 
         /* Scrolled state - hide logo text and show event teaser */
+        header.scrolled {
+            padding: 1.2rem 1rem; /* Increase padding when scrolled */
+        }
+
         header.scrolled .logo-text {
             opacity: 0;
             transform: translateY(-10px);
         }
 
         header.scrolled .event-teaser{
-            display:flex;
+            display: flex;
         }
 
         /* Keep logo image hidden */
         header.scrolled .logo-image{
-            display:none;
+            display: none;
         }
 
         .nav-container {
@@ -100,6 +110,8 @@
             display: flex;
             justify-content: center;
             align-items: center;
+            position: relative;
+            min-height: 50px;
         }
 
         .logo-container {
@@ -203,17 +215,11 @@
         }
 
         .text-section p {
-            font-size: 1.1rem;
+            font-size: 1.15rem;
             line-height: 1.8;
             font-weight: 300;
             letter-spacing: 0.03em;
             opacity: 0.9;
-        }
-        
-        .text-section p:first-of-type {
-            font-size: 1.25rem;
-            font-weight: 400;
-            letter-spacing: 0.05em;
         }
 
         /* Scroll Animation Classes */
@@ -419,6 +425,13 @@
             .event-teaser{
                 flex-direction:column;    /* stapelt Text + Button */
                 text-align:center;        /* zentriert den Text im Block */
+                left: 1rem;
+                right: 1rem;
+                max-width: calc(100% - 2rem);
+            }
+            
+            .event-teaser span {
+                margin-bottom: 0.5rem;
             }
         }
         
@@ -439,14 +452,14 @@
                 <div class="logo-text">BEATS & BEANS</div>
                 <div class="logo-image"></div>
                 <!-- Alternativ: <img class="logo-image" src="your-logo.png" alt="Beats & Beans Logo" /> -->
-    
-                <!-- ✨ NEU: Event-Teaser, erst sichtbar im Scroll-State -->
-                <div class="event-teaser">
-                    <span>Nächstes Event: Iaro Ost | 19.12. | 11 – 16 Uhr</span>
-                    <a  class="calendar-btn"
-                        href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Beats%20%26%20Beans&dates=20251219T100000/20251219T150000&location=Caf%C3%A9%20Iaro%20Ost%2C%20Karlsruhe&details=Housebeats%20x%20Coffee"
-                        target="_blank" rel="noopener">Zum Kalender ➕</a>
-                </div>
+            </div>
+            
+            <!-- ✨ Event-Teaser, positioned absolutely within nav-container -->
+            <div class="event-teaser">
+                <span>Nächstes Event: iaro ost | 19.07 | 11 - 16 Uhr</span>
+                <a class="calendar-btn"
+                   href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Beats%20%26%20Beans&dates=20250719T100000/20250719T150000&location=Caf%C3%A9%20Iaro%20Ost%2C%20Karlsruhe&details=Housebeats%20x%20Coffee"
+                   target="_blank" rel="noopener">Zum Kalender</a>
             </div>
         </div>
     </header>
