@@ -1,0 +1,96 @@
+# Beats & Beans Website - Cursor Rules
+
+## Project Overview
+This is a single-page website for "Beats & Beans" - a house music event that combines coffee culture with electronic music. The site features a modern, minimalist design with smooth animations and a mobile-first approach.
+
+## Design System & Brand Guidelines
+
+### Colors
+- Primary Background: `#14635f` (teal/dark green)
+- Accent Color: `#f4a9c8` (soft pink)
+- Text Light: `#ffffff` (white)
+- Use CSS custom properties: `var(--primary-bg)`, `var(--accent-pink)`, `var(--text-light)`
+
+### Typography
+- Primary Font Stack: `'CustomFont', 'Futura', 'Century Gothic', sans-serif`
+- Font fallbacks defined via @font-face with local() references
+- Use letter-spacing for elegant typography
+- Gradient text effects for headings using the brand colors
+
+### Visual Style
+- Circular/rounded design elements (50% border-radius)
+- Gradient backgrounds and text effects
+- Backdrop blur effects for glassmorphism
+- Shimmer animations for dynamic text
+- Smooth fade-in scroll animations
+
+## Code Style Preferences
+
+### CSS/Styling
+- Keep all styles inline within `<style>` tags in index.html
+- Use CSS custom properties for consistency
+- Mobile-first responsive design with progressive enhancement
+- Prefer CSS Grid and Flexbox for layouts
+- Use semantic transition and animation properties
+- Implement proper backdrop-filter support with -webkit- prefixes
+
+### HTML Structure
+- Semantic HTML5 elements
+- Proper accessibility with ARIA labels and roles
+- German language attribute (lang="de")
+- Meta viewport for responsive design
+- Use meaningful alt text and descriptions
+
+### JavaScript
+- Vanilla JavaScript preferred
+- Intersection Observer for scroll animations
+- Event-driven animations and interactions
+- Performance-conscious code
+
+## File Structure
+- Single-page application in `index.html`
+- Assets stored in `/gfx/` directory
+- Logo placeholder system with plans for actual logo integration
+- External video content via direct URL references
+
+## Content Guidelines
+- German language content
+- Coffee + electronic music theme
+- Professional yet approachable tone
+- Focus on experience and atmosphere
+- Include proper copyright notices
+
+## Technical Requirements
+- Mobile-responsive design (breakpoints: 768px, 1024px)
+- Cross-browser compatibility
+- Smooth scrolling and animation performance
+- Video autoplay with proper fallbacks
+- Social media integration (Instagram, TikTok, Email, WhatsApp)
+
+## Accessibility Standards
+- Proper ARIA labels on interactive elements
+- Keyboard navigation support
+- Color contrast compliance
+- Screen reader friendly structure
+- Reduced motion considerations
+
+## Brand Voice
+- Elegant and sophisticated
+- Emphasizes the fusion of coffee culture and house music
+- Welcoming and inclusive
+- Focus on "experience" and "atmosphere"
+- Use terms like "groove", "beats", "beans", "soul"
+
+## Development Notes
+- Logo system ready for actual logo replacement (currently using CSS placeholder)
+- Header transforms from text to logo on scroll
+- Social sidebar for desktop, sticky footer for mobile
+- Scroll-triggered animations with proper intersection observer
+- Video container with 1:1 aspect ratio and circular crop
+
+## Future Considerations
+- Logo implementation (replace CSS placeholder)
+- Content management for events/dates
+- Newsletter signup integration
+- Event booking/ticketing system
+- Multi-language support expansion 
