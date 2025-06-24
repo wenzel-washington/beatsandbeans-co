@@ -51,6 +51,35 @@
             background-color: rgba(20, 99, 95, 0.98);
         }
 
+                /* Teaser standardmäßig ausblenden */
+        .event-teaser{
+            display:none;
+            gap:.75rem;
+            align-items:center;
+            font-size:.9rem;
+            letter-spacing:.04em;
+            white-space:nowrap;
+        }
+
+        /* Button-Style */
+        .calendar-btn{
+            padding:.3rem .6rem;
+            border:1px solid var(--accent-pink);
+            border-radius:4px;
+            font-size:.8rem;
+            text-decoration:none;
+            color:var(--accent-pink);
+            transition:background .2s ease;
+        }
+        .calendar-btn:hover{
+            background:rgba(244,169,200,.15);
+        }
+
+        /* Header hat bereits den JS-Scroll-State „scrolled“ – dort Teaser einblenden */
+        header.scrolled .event-teaser{
+            display:flex;
+        }
+
         .nav-container {
             max-width: 1200px;
             margin: 0 auto;
@@ -116,11 +145,11 @@
             transform: translateY(-10px);
         }
 
-        header.scrolled .logo-image {
-            opacity: 1;
-            transform: translateX(-50%) translateY(0);
+        /* Optional: Logo-Icon im gescrollten Zustand ausblenden */
+        header.scrolled .logo-image{
+            display:none;
         }
-
+        
         /* Main Content */
         main {
             flex: 1;
@@ -387,9 +416,18 @@
     <header>
         <div class="nav-container">
             <div class="logo-container">
+                <!-- Logo-Block bleibt unverändert -->
                 <div class="logo-text">BEATS & BEANS</div>
                 <div class="logo-image"></div>
-                <!-- Replace the div above with: <img class="logo-image" src="your-logo.png" alt="Beats & Beans Logo" /> -->
+                <!-- Alternativ: <img class="logo-image" src="your-logo.png" alt="Beats & Beans Logo" /> -->
+    
+                <!-- ✨ NEU: Event-Teaser, erst sichtbar im Scroll-State -->
+                <div class="event-teaser">
+                    <span>Nächstes Event: Iaro Ost | 19.12. | 11 – 16 Uhr</span>
+                    <a  class="calendar-btn"
+                        href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Beats%20%26%20Beans&dates=20251219T100000/20251219T150000&location=Caf%C3%A9%20Iaro%20Ost%2C%20Karlsruhe&details=Housebeats%20x%20Coffee"
+                        target="_blank" rel="noopener">Zum Kalender ➕</a>
+                </div>
             </div>
         </div>
     </header>
@@ -445,8 +483,8 @@
     <main>
         <div class="content-container">
             <div class="text-section fade-in">
-                <h1>WELCOME TO THE GROOVE</h1>
-                <p>Where coffee culture meets house music. Experience the perfect blend of beats and beans in an atmosphere that moves your soul.</p>
+                <h1>Coffee. Culture. Community.</h1>
+                <p>Wir verbinden das Beste aus zwei Welten: die entspannte Atmosphäre eines Cafés und die energiegeladenen Vibes eines House-Events. Feinste Housebeats, exzellente Kaffeespezialitäten und großartige Menschen – mitten in Karlsruhe. Kein Alkohol, kein Kater, pure Lebensfreude.</p>
             </div>
 
             <div class="video-container fade-in fade-in-delay">
@@ -457,7 +495,7 @@
             </div>
 
             <div class="text-section fade-in fade-in-delay-2">
-                <p>Join us for an unforgettable journey through deep house rhythms and aromatic coffee experiences. Every beat, every sip, every moment crafted for your enjoyment.</p>
+                <p>Beats & Beans ist dein Tag mit frischen House-Sounds und exzellentem Kaffee. Inspiriert von global erfolgreichen Konzepten wie AM.RADIO in Los Angeles und The Coffee Party in Toronto, bringen wir dieses einzigartige Erlebnis jetzt nach Karlsruhe. Komm vorbei, tanz entspannt, genieße den besten Kaffee der Stadt und triff nette Menschen – ohne den üblichen Clubstress.</p>
             </div>
         </div>
     </main>
