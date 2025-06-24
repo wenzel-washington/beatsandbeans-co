@@ -53,26 +53,29 @@
 
                 /* Teaser standardmäßig ausblenden */
         .event-teaser{
-            display:none;
             gap:.75rem;
             align-items:center;
             font-size:.9rem;
-            letter-spacing:.04em;
-            white-space:nowrap;
+            line-height:1.4;
+            white-space:normal;           /* Umschalten: erlaubt Zeilenumbruch */
+            background:rgba(244,169,200,.15);   /* zartrosa Highlight */
+            padding:.35rem .75rem;
+            border-radius:4px;
         }
 
-        /* Button-Style */
+        /* Kalender-Button auffällig */
         .calendar-btn{
-            padding:.3rem .6rem;
+            padding:.35rem .65rem;
             border:1px solid var(--accent-pink);
             border-radius:4px;
             font-size:.8rem;
             text-decoration:none;
             color:var(--accent-pink);
-            transition:background .2s ease;
+            transition:background .2s;
         }
+
         .calendar-btn:hover{
-            background:rgba(244,169,200,.15);
+            background:rgba(244,169,200,.25);
         }
 
         /* Header hat bereits den JS-Scroll-State „scrolled“ – dort Teaser einblenden */
@@ -149,7 +152,7 @@
         header.scrolled .logo-image{
             display:none;
         }
-        
+
         /* Main Content */
         main {
             flex: 1;
@@ -410,6 +413,22 @@
                 max-width: 600px;
             }
         }
+
+        /* --- MOBILE OPTIMIERUNG (<480 px) ----------------------- */
+        @media (max-width:480px){
+            .event-teaser{
+                flex-direction:column;    /* stapelt Text + Button */
+                text-align:center;        /* zentriert den Text im Block */
+            }
+        }
+        
+        /* Body-Copy immer linksbündig 
+        .text-section p,
+        .text-section li{
+            text-align:left;
+        }
+        */
+
     </style>
 </head>
 <body>
@@ -484,7 +503,8 @@
         <div class="content-container">
             <div class="text-section fade-in">
                 <h1>Coffee. Culture. Community.</h1>
-                <p>Wir verbinden das Beste aus zwei Welten: die entspannte Atmosphäre eines Cafés und die energiegeladenen Vibes eines House-Events. Feinste Housebeats, exzellente Kaffeespezialitäten und großartige Menschen – mitten in Karlsruhe. Kein Alkohol, kein Kater, pure Lebensfreude.</p>
+                <p>Wir verbinden das Beste aus zwei Welten: die entspannte Atmosphäre eines Cafés und die energiegeladenen Vibes eines House-Events.</p>
+                <p>Feinste Housebeats, exzellente Kaffeespezialitäten und großartige Menschen – mitten in Karlsruhe. Kein Alkohol, kein Kater, pure Lebensfreude.</p>
             </div>
 
             <div class="video-container fade-in fade-in-delay">
@@ -495,7 +515,9 @@
             </div>
 
             <div class="text-section fade-in fade-in-delay-2">
-                <p>Beats & Beans ist dein Tag mit frischen House-Sounds und exzellentem Kaffee. Inspiriert von global erfolgreichen Konzepten wie AM.RADIO in Los Angeles und The Coffee Party in Toronto, bringen wir dieses einzigartige Erlebnis jetzt nach Karlsruhe. Komm vorbei, tanz entspannt, genieße den besten Kaffee der Stadt und triff nette Menschen – ohne den üblichen Clubstress.</p>
+                <p>Beats & Beans ist dein Tag mit frischen House-Sounds und exzellentem Kaffee.</p>
+                <p>Inspiriert von global erfolgreichen Konzepten wie AM.RADIO in Los Angeles und The Coffee Party in Toronto, bringen wir dieses einzigartige Erlebnis jetzt nach Karlsruhe.</p>
+                <p>Komm vorbei, tanz entspannt, genieße den besten Kaffee der Stadt und triff nette Menschen – ohne den üblichen Clubstress.</p>
             </div>
         </div>
     </main>
