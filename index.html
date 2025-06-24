@@ -51,8 +51,9 @@
             background-color: rgba(20, 99, 95, 0.98);
         }
 
-                /* Teaser standardmäßig ausblenden */
+        /* Teaser standardmäßig ausblenden */
         .event-teaser{
+            display: none;  /* Initially hidden */
             gap:.75rem;
             align-items:center;
             font-size:.9rem;
@@ -78,9 +79,19 @@
             background:rgba(244,169,200,.25);
         }
 
-        /* Header hat bereits den JS-Scroll-State „scrolled“ – dort Teaser einblenden */
+        /* Scrolled state - hide logo text and show event teaser */
+        header.scrolled .logo-text {
+            opacity: 0;
+            transform: translateY(-10px);
+        }
+
         header.scrolled .event-teaser{
             display:flex;
+        }
+
+        /* Keep logo image hidden */
+        header.scrolled .logo-image{
+            display:none;
         }
 
         .nav-container {
@@ -140,17 +151,6 @@
             border-radius: 50%;
             border: 2px solid var(--primary-bg);
             background: radial-gradient(circle at center, var(--primary-bg) 8px, transparent 8px);
-        }
-
-        /* Scrolled state */
-        header.scrolled .logo-text {
-            opacity: 0;
-            transform: translateY(-10px);
-        }
-
-        /* Optional: Logo-Icon im gescrollten Zustand ausblenden */
-        header.scrolled .logo-image{
-            display:none;
         }
 
         /* Main Content */
