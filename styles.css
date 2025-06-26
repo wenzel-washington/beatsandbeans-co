@@ -443,10 +443,19 @@ footer {
 
 /* ===== IARO-OST PAGE SPECIFIC STYLES ===== */
 
-/* Body override for iaro page */
+/* Body override for iaro page - make more specific */
 body.iaro-page {
-    background-color: var(--iaro-bg);
-    color: var(--iaro-text);
+    background-color: var(--iaro-bg) !important;
+    color: var(--iaro-text) !important;
+}
+
+/* Override main content for iaro page - make more specific */
+body.iaro-page main {
+    background-color: var(--iaro-bg) !important;
+    padding: 100px 0 2rem !important;
+    min-height: auto !important;
+    display: block !important;
+    text-align: left !important;
 }
 
 /* Event date badge */
@@ -460,13 +469,6 @@ body.iaro-page {
     font-weight: 500;
     margin-bottom: 1.5rem;
     letter-spacing: 0.02em;
-}
-
-/* Override main content for iaro page */
-body.iaro-page main {
-    background-color: var(--iaro-bg);
-    padding: 100px 0 2rem;
-    min-height: auto;
 }
 
 /* Hero section for iaro page */
