@@ -42,63 +42,93 @@ header {
     -webkit-backdrop-filter: blur(10px);
     z-index: 1000;
     padding: 1rem;
-    transition: box-shadow 0.3s ease, background-color 0.3s ease;
+    transition: padding 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
 }
 
 header.scrolled {
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
     background-color: rgba(20, 99, 95, 0.98);
+    padding: 2rem 1rem; /* Mehr Padding für mehr Luft */
 }
 
-/* Teaser standardmäßig ausblenden */
+/* Event teaser - mit IARO-Farben */
 .event-teaser{
-    display: none;  /* Initially hidden */
+    display: none;
     position: absolute;
-    left: 0;
+    left: 50%;
     top: 50%;
-    transform: translateY(-50%);
+    transform: translate(-50%, -50%);
     gap: 1rem;
     align-items: center;
-    font-size: .9rem;
+    font-size: .85rem;
     line-height: 1.4;
-    white-space: nowrap;
-    background: rgba(244,169,200,.15);
-    padding: .5rem 1rem;
-    border-radius: 6px;
-    max-width: calc(100% - 2rem);
+    background: var(--iaro-bg);
+    color: var(--iaro-text);
+    padding: .8rem 1.2rem; /* Etwas mehr Padding für zwei Buttons */
+    border-radius: 12px;
+    max-width: calc(100% - 4rem);
+    border: 1px solid var(--iaro-border);
+    box-shadow: 0 4px 12px rgba(45, 45, 45, 0.1);
+    z-index: 1;
+    flex-direction: column; /* Vertikale Anordnung */
+    text-align: center;
 }
 
-/* Kalender-Button auffällig */
+/* Button Container */
+.event-buttons {
+    display: flex;
+    gap: 0.8rem;
+    margin-top: 0.5rem;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+/* Kalender-Button & Event-Button - IARO-Stil */
 .calendar-btn{
     padding: .4rem .8rem;
-    border: 1px solid var(--accent-pink);
-    border-radius: 6px;
-    font-size: .85rem;
+    border: 1px solid var(--iaro-accent);
+    border-radius: 8px;
+    font-size: .8rem;
     text-decoration: none;
-    color: var(--accent-pink);
-    transition: background .2s;
+    color: var(--iaro-text);
+    background: var(--iaro-card-bg);
+    transition: all 0.2s ease;
     white-space: nowrap;
+    flex-shrink: 0; /* Verhindert Schrumpfen */
 }
 
 .calendar-btn:hover{
-    background: rgba(244,169,200,.25);
+    background: var(--iaro-accent);
+    color: var(--iaro-card-bg);
+    transform: translateY(-1px);
+    box-shadow: 0 2px 8px rgba(212, 165, 116, 0.3);
 }
 
-/* Scrolled state - hide logo text and show event teaser */
-header.scrolled {
-    padding: 1.2rem 1rem; /* Increase padding when scrolled */
+/* Event teaser Text-Farben */
+.event-teaser span {
+    color: var(--iaro-text-light); /* #666666 - hellerer Text für Event-Details */
 }
 
+/* Scrolled state - Logo Text über Event Teaser */
 header.scrolled .logo-text {
-    opacity: 0;
-    transform: translateY(-10px);
+    opacity: 1;
+    transform: translateY(-38px); /* Angepasst auf -38px */
+    font-size: 1.2rem;
+    z-index: 10;
+    position: relative;
 }
 
 header.scrolled .event-teaser{
     display: flex;
+    top: 77%; /* Angepasst auf 77% */
+    z-index: 1;
 }
 
-/* Keep logo image hidden */
+header.scrolled .nav-container {
+    min-height: 130px;
+}
+
+/* Logo image bleibt versteckt */
 header.scrolled .logo-image{
     display: none;
 }
@@ -111,6 +141,11 @@ header.scrolled .logo-image{
     align-items: center;
     position: relative;
     min-height: 50px;
+    flex-direction: column;
+}
+
+header.scrolled .nav-container {
+    min-height: 100px; /* Mehr Höhe für mehr Luft */
 }
 
 .logo-container {
@@ -119,6 +154,7 @@ header.scrolled .logo-image{
     display: flex;
     align-items: center;
     justify-content: center;
+    z-index: 2; /* Logo Container über Event-Box */
 }
 
 .logo-text {
@@ -131,7 +167,9 @@ header.scrolled .logo-image{
     -webkit-text-fill-color: transparent;
     opacity: 1;
     transform: translateY(0);
-    transition: opacity 0.3s ease, transform 0.3s ease;
+    transition: opacity 0.3s ease, transform 0.3s ease, font-size 0.3s ease;
+    position: relative; /* Für z-index */
+    z-index: 3; /* Höchste Priorität */
 }
 
 .logo-image {
@@ -406,6 +444,28 @@ footer {
     .social-sidebar {
         display: flex;
     }
+
+    /* Desktop Event Teaser */
+    .event-teaser {
+        max-width: 500px;
+        text-align: center;
+    }
+
+    header.scrolled {
+        padding: 3rem 1rem; /* Mehr Padding */
+    }
+
+    header.scrolled .nav-container {
+        min-height: 150px;
+    }
+
+    header.scrolled .logo-text {
+        transform: translateY(-38px); /* Auch auf Desktop -38px */
+    }
+
+    header.scrolled .event-teaser{
+        top: 77%; /* Auch auf Desktop 77% */
+    }
 }
 
 @media (min-width: 1024px) {
@@ -422,15 +482,36 @@ footer {
 /* --- MOBILE OPTIMIERUNG (<480 px) ----------------------- */
 @media (max-width:480px){
     .event-teaser{
-        flex-direction:column;    /* stapelt Text + Button */
-        text-align:center;        /* zentriert den Text im Block */
-        left: 1rem;
-        right: 1rem;
-        max-width: calc(100% - 2rem);
+        padding: 1rem;
     }
     
-    .event-teaser span {
-        margin-bottom: 0.5rem;
+    .event-buttons {
+        flex-direction: column; /* Buttons untereinander auf Mobile */
+        gap: 0.5rem;
+        width: 100%;
+    }
+    
+    .calendar-btn {
+        font-size: 0.75rem;
+        padding: .4rem .8rem;
+        width: 100%; /* Volle Breite auf Mobile */
+        text-align: center;
+    }
+
+    header.scrolled {
+        padding: 2.5rem 1rem; /* Mehr Padding */
+    }
+
+    header.scrolled .nav-container {
+        min-height: 120px;
+    }
+
+    header.scrolled .logo-text {
+        transform: translateY(-38px); /* Auf Mobile auch -38px */
+    }
+
+    header.scrolled .event-teaser{
+        top: 77%; /* Auf Mobile auch 77% */
     }
 }
 
