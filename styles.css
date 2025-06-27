@@ -112,7 +112,7 @@ header.scrolled {
 /* Scrolled state - Logo Text über Event Teaser */
 header.scrolled .logo-text {
     opacity: 1;
-    transform: translateY(-38px); /* Angepasst auf -38px */
+    transform: translateY(-35px); /* Adjusted from -38px */
     font-size: 1.2rem;
     z-index: 10;
     position: relative;
@@ -120,12 +120,12 @@ header.scrolled .logo-text {
 
 header.scrolled .event-teaser{
     display: flex;
-    top: 77%; /* Angepasst auf 77% */
+    top: 75%; /* Adjusted from 77% */
     z-index: 1;
 }
 
 header.scrolled .nav-container {
-    min-height: 130px;
+    min-height: 110px; /* Reduced from 130px */
 }
 
 /* Logo image bleibt versteckt */
@@ -452,19 +452,19 @@ footer {
     }
 
     header.scrolled {
-        padding: 3rem 1rem; /* Mehr Padding */
+        padding: 2rem 1rem; /* Reduced from 3rem */
     }
 
     header.scrolled .nav-container {
-        min-height: 150px;
+        min-height: 130px; /* Reduced from 150px */
     }
 
     header.scrolled .logo-text {
-        transform: translateY(-38px); /* Auch auf Desktop -38px */
+        transform: translateY(-35px); /* Adjusted from -38px */
     }
 
     header.scrolled .event-teaser{
-        top: 77%; /* Auch auf Desktop 77% */
+        top: 75%; /* Adjusted from 77% */
     }
 }
 
@@ -499,19 +499,19 @@ footer {
     }
 
     header.scrolled {
-        padding: 2.5rem 1rem; /* Mehr Padding */
+        padding: 1.5rem 1rem; /* Reduced from 2.5rem */
     }
 
     header.scrolled .nav-container {
-        min-height: 120px;
+        min-height: 100px; /* Reduced from 120px */
     }
 
     header.scrolled .logo-text {
-        transform: translateY(-38px); /* Auf Mobile auch -38px */
+        transform: translateY(-30px); /* Reduced from -38px */
     }
 
     header.scrolled .event-teaser{
-        top: 77%; /* Auf Mobile auch 77% */
+        top: 80%; /* Increased from 77% to create more space */
     }
 }
 
@@ -860,4 +860,4 @@ body.iaro-page main {
     .location-content {
         padding: 3rem;
     }
-} 
+}
