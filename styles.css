@@ -144,6 +144,18 @@ header.scrolled .logo-text {
     justify-content: center;
 }
 
+/* Add this keyframe animation at the top of your CSS file */
+@keyframes slideInFromBottom {
+    from {
+        transform: translateX(-50%) translateY(100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(-50%) translateY(0);
+        opacity: 1;
+    }
+}
+
 /* Kalender-Button & Event-Button - IARO-Stil */
 .calendar-btn {
     padding: .4rem .8rem;
@@ -165,7 +177,7 @@ header.scrolled .logo-text {
     box-shadow: 0 2px 8px rgba(212, 165, 116, 0.3);
 }
 
-/* Desktop Event Sidebar - UPDATED */
+/* Update the Desktop Event Sidebar */
 .event-sidebar {
     position: fixed;
     left: 50%;
@@ -173,9 +185,11 @@ header.scrolled .logo-text {
     bottom: 2rem;
     display: none;
     z-index: 999;
+    /* Add animation */
+    animation: slideInFromBottom 1.5s ease-out forwards;
 }
 
-/* Mobile Event Teaser - UPDATED */
+/* Update the Mobile Event Teaser */
 .mobile-event-teaser {
     position: fixed;
     bottom: 60px;
@@ -185,6 +199,17 @@ header.scrolled .logo-text {
     width: 100%;
     max-width: 90%;
     z-index: 998;
+    /* Add animation */
+    animation: slideInFromBottom 1.5s ease-out forwards;
+}
+
+/* Optional: Add a slight delay to make it appear after page content loads */
+.event-sidebar,
+.mobile-event-teaser {
+    animation-delay: 0.2s;
+    /* Initially hide it until animation starts */
+    opacity: 0;
+    transform: translateX(-50%) translateY(100%);
 }
 
 /* Remove the old padding */
