@@ -41,16 +41,96 @@ header {
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
     z-index: 1000;
-    padding: 1.5rem 1rem;
-    transition: padding 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease, height 0.3s ease;
-    height: 80px;
+    padding: 1rem;
+    transition: padding 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
 }
 
 header.scrolled {
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
     background-color: rgba(20, 99, 95, 0.98);
-    padding: 0.5rem 1rem;
-    height: 50px; /* Significantly reduced height on scroll */
+    padding: 2rem 1rem; /* Mehr Padding für mehr Luft */
+}
+
+/* Event teaser - mit IARO-Farben */
+.event-teaser{
+    display: none;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    gap: 1rem;
+    align-items: center;
+    font-size: .85rem;
+    line-height: 1.4;
+    background: var(--iaro-bg);
+    color: var(--iaro-text);
+    padding: .8rem 1.2rem; /* Etwas mehr Padding für zwei Buttons */
+    border-radius: 12px;
+    max-width: calc(100% - 4rem);
+    border: 1px solid var(--iaro-border);
+    box-shadow: 0 4px 12px rgba(45, 45, 45, 0.1);
+    z-index: 1;
+    flex-direction: column; /* Vertikale Anordnung */
+    text-align: center;
+}
+
+/* Button Container */
+.event-buttons {
+    display: flex;
+    gap: 0.8rem;
+    margin-top: 0.5rem;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+/* Kalender-Button & Event-Button - IARO-Stil */
+.calendar-btn{
+    padding: .4rem .8rem;
+    border: 1px solid var(--iaro-accent);
+    border-radius: 8px;
+    font-size: .8rem;
+    text-decoration: none;
+    color: var(--iaro-text);
+    background: var(--iaro-card-bg);
+    transition: all 0.2s ease;
+    white-space: nowrap;
+    flex-shrink: 0; /* Verhindert Schrumpfen */
+}
+
+.calendar-btn:hover{
+    background: var(--iaro-accent);
+    color: var(--iaro-card-bg);
+    transform: translateY(-1px);
+    box-shadow: 0 2px 8px rgba(212, 165, 116, 0.3);
+}
+
+/* Event teaser Text-Farben */
+.event-teaser span {
+    color: var(--iaro-text-light); /* #666666 - hellerer Text für Event-Details */
+}
+
+/* Scrolled state - Logo Text über Event Teaser */
+header.scrolled .logo-text {
+    opacity: 1;
+    transform: translateY(-35px); /* Adjusted from -38px */
+    font-size: 1.2rem;
+    z-index: 10;
+    position: relative;
+}
+
+header.scrolled .event-teaser{
+    display: flex;
+    top: 75%; /* Adjusted from 77% */
+    z-index: 1;
+}
+
+header.scrolled .nav-container {
+    min-height: 110px; /* Reduced from 130px */
+}
+
+/* Logo image bleibt versteckt */
+header.scrolled .logo-image{
+    display: none;
 }
 
 .nav-container {
@@ -60,15 +140,21 @@ header.scrolled {
     justify-content: center;
     align-items: center;
     position: relative;
-    height: 100%;
+    min-height: 50px;
+    flex-direction: column;
+}
+
+header.scrolled .nav-container {
+    min-height: 100px; /* Mehr Höhe für mehr Luft */
 }
 
 .logo-container {
     position: relative;
-    height: 100%;
+    height: 50px;
     display: flex;
     align-items: center;
     justify-content: center;
+    z-index: 2; /* Logo Container über Event-Box */
 }
 
 .logo-text {
@@ -79,13 +165,11 @@ header.scrolled {
     background-clip: text;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
-    transition: font-size 0.3s ease;
-}
-
-/* More significant logo shrinking on scroll */
-header.scrolled .logo-text {
-    font-size: 0.9rem; /* Much smaller on scroll */
-    letter-spacing: 0.15em;
+    opacity: 1;
+    transform: translateY(0);
+    transition: opacity 0.3s ease, transform 0.3s ease, font-size 0.3s ease;
+    position: relative; /* Für z-index */
+    z-index: 3; /* Höchste Priorität */
 }
 
 .logo-image {
@@ -118,85 +202,10 @@ header.scrolled .logo-text {
     background: radial-gradient(circle at center, var(--primary-bg) 8px, transparent 8px);
 }
 
-/* Permanent Event Teaser styling (reused from original) */
-.permanent-event-teaser {
-    display: flex;
-    gap: 1rem;
-    align-items: center;
-    font-size: .85rem;
-    line-height: 1.4;
-    background: var(--iaro-bg);
-    color: var(--iaro-text);
-    padding: .8rem 1.2rem;
-    border-radius: 12px;
-    border: 1px solid var(--iaro-border);
-    box-shadow: 0 4px 12px rgba(45, 45, 45, 0.1);
-    flex-direction: column;
-    text-align: center;
-}
-
-/* Button Container */
-.event-buttons {
-    display: flex;
-    gap: 0.8rem;
-    margin-top: 0.5rem;
-    flex-wrap: wrap;
-    justify-content: center;
-}
-
-/* Kalender-Button & Event-Button - IARO-Stil */
-.calendar-btn {
-    padding: .4rem .8rem;
-    border: 1px solid var(--iaro-accent);
-    border-radius: 8px;
-    font-size: .8rem;
-    text-decoration: none;
-    color: var(--iaro-text);
-    background: var(--iaro-card-bg);
-    transition: all 0.2s ease;
-    white-space: nowrap;
-    flex-shrink: 0;
-}
-
-.calendar-btn:hover {
-    background: var(--iaro-accent);
-    color: var(--iaro-card-bg);
-    transform: translateY(-1px);
-    box-shadow: 0 2px 8px rgba(212, 165, 116, 0.3);
-}
-
-/* Desktop Event Sidebar - UPDATED */
-.event-sidebar {
-    position: fixed;
-    left: 50%;
-    transform: translateX(-50%);
-    bottom: 2rem;
-    display: none;
-    z-index: 999;
-}
-
-/* Mobile Event Teaser - UPDATED */
-.mobile-event-teaser {
-    position: fixed;
-    bottom: 60px;
-    left: 50%;
-    transform: translateX(-50%);
-    display: none;
-    width: 100%;
-    max-width: 90%;
-    z-index: 998;
-}
-
-/* Remove the old padding */
-.mobile-event-teaser .permanent-event-teaser {
-    max-width: 100%;
-    margin: 0 auto;
-}
-
 /* Main Content */
 main {
     flex: 1;
-    padding: 100px 1rem 2rem; /* Adjusted for new header height */
+    padding: 80px 1rem 2rem;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -409,20 +418,12 @@ footer {
         display: flex;
     }
 
-    .mobile-event-teaser {
-        display: block;
-    }
-
     main {
-        padding-bottom: 160px; /* Space for both event teaser and social footer */
+        padding-bottom: 80px; /* Space for sticky footer */
     }
 
     .logo-text {
         font-size: 1.2rem;
-    }
-
-    header.scrolled .logo-text {
-        font-size: 0.8rem;
     }
 }
 
@@ -444,13 +445,26 @@ footer {
         display: flex;
     }
 
-    /* ADD THESE TWO NEW RULES */
-    .event-sidebar {
-        display: block;
+    /* Desktop Event Teaser */
+    .event-teaser {
+        max-width: 500px;
+        text-align: center;
     }
-    
-    .permanent-event-teaser {
-        max-width: 300px;
+
+    header.scrolled {
+        padding: 2rem 1rem; /* Reduced from 3rem */
+    }
+
+    header.scrolled .nav-container {
+        min-height: 130px; /* Reduced from 150px */
+    }
+
+    header.scrolled .logo-text {
+        transform: translateY(-35px); /* Adjusted from -38px */
+    }
+
+    header.scrolled .event-teaser{
+        top: 75%; /* Adjusted from 77% */
     }
 }
 
@@ -466,13 +480,13 @@ footer {
 }
 
 /* --- MOBILE OPTIMIERUNG (<480 px) ----------------------- */
-@media (max-width: 480px) {
-    .permanent-event-teaser {
+@media (max-width:480px){
+    .event-teaser{
         padding: 1rem;
     }
     
     .event-buttons {
-        flex-direction: column;
+        flex-direction: column; /* Buttons untereinander auf Mobile */
         gap: 0.5rem;
         width: 100%;
     }
@@ -480,27 +494,33 @@ footer {
     .calendar-btn {
         font-size: 0.75rem;
         padding: .4rem .8rem;
-        width: 100%;
+        width: 100%; /* Volle Breite auf Mobile */
         text-align: center;
     }
 
-    .mobile-event-teaser {
-        padding: 0 0.5rem;
-    }
-
-    header {
-        height: 70px;
-    }
-
     header.scrolled {
-        height: 45px;
-        padding: 0.4rem 1rem;
+        padding: 1.5rem 1rem; /* Reduced from 2.5rem */
+    }
+
+    header.scrolled .nav-container {
+        min-height: 100px; /* Reduced from 120px */
     }
 
     header.scrolled .logo-text {
-        font-size: 0.75rem;
+        transform: translateY(-30px); /* Reduced from -38px */
+    }
+
+    header.scrolled .event-teaser{
+        top: 80%; /* Increased from 77% to create more space */
     }
 }
+
+/* Body-Copy immer linksbündig 
+.text-section p,
+.text-section li{
+    text-align:left;
+}
+*/
 
 /* ===== IARO-OST PAGE SPECIFIC STYLES ===== */
 
