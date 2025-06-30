@@ -16,6 +16,10 @@
     --iaro-border: #e8e5e0;
 }
 
+html {
+    scroll-behavior: smooth;
+}
+
 @font-face {
     font-family: 'CustomFont';
     src: local('Futura'), local('Century Gothic'), local('Arial');
@@ -607,6 +611,18 @@ body.iaro-page main {
 .quick-info-item span {
     font-size: 0.9rem;
     color: var(--iaro-text-light);
+}
+
+.location-link {
+    color: inherit;
+    text-decoration: underline;
+    text-decoration-color: var(--accent-pink);
+    text-underline-offset: 3px;
+    transition: text-decoration-color 0.2s ease;
+}
+
+.location-link:hover {
+    text-decoration-color: var(--primary-bg);
 }
 
 /* Content sections for iaro page */
