@@ -886,8 +886,8 @@ body.iaro-page main {
     position: fixed;
     bottom: 2rem;
     right: 2rem;
-    width: 50px;
-    height: 50px;
+    width: 35px;
+    height: 35px;
     background-color: var(--iaro-text);
     color: var(--iaro-bg);
     border-radius: 8px;
@@ -895,7 +895,7 @@ body.iaro-page main {
     align-items: center;
     justify-content: center;
     text-decoration: none;
-    font-size: 24px;
+    font-size: 20px;
     font-weight: bold;
     box-shadow: 0 4px 12px rgba(0,0,0,0.2);
     transition: transform 0.2s ease, background-color 0.2s ease;
