@@ -627,7 +627,7 @@ body.iaro-page main {
 
 /* Content sections for iaro page */
 .iaro-content-section {
-    padding: 0 1.5rem 3rem;
+    padding: 0 1.5rem 1rem;
     max-width: 800px;
     margin: 0 auto;
     text-align: left;
@@ -705,10 +705,14 @@ body.iaro-page main {
 
 /* Image sections */
 .image-section {
-    padding: 3rem 0;
+    padding: 2rem 0;
     background: var(--iaro-card-bg);
     border-top: 1px solid var(--iaro-border);
     border-bottom: 1px solid var(--iaro-border);
+}
+
+.image-section + .iaro-content-section {
+    margin-top: 3rem;
 }
 
 .image-grid {
